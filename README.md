@@ -8,7 +8,7 @@ Features: email sign-in (no password) with progress saved per user, study materi
 - `index.html` — the whole front end (no build step).
 - `api/progress.js` — saves/loads each user's progress by email.
 - `api/leaderboard.js` — shared game leaderboards (top 10 shown, 100 kept per game).
-- `api/_redis.js` — tiny Upstash Redis REST client.
+- `api/_db.js` — Neon Postgres helper; creates tables on first use.
 
-## Storage
-The API needs an Upstash Redis database connected to the Vercel project (Vercel → Storage → Upstash for Redis). It reads `KV_REST_API_URL` / `KV_REST_API_TOKEN` (or `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`). Without it, the site still works and saves progress in the browser only.
+## Storage (Neon Postgres)
+The API needs a Neon Postgres database connected to the Vercel project (Vercel → Storage → Neon). It reads `DATABASE_URL` (or `POSTGRES_URL`) and creates its two tables automatically. Without it, the site still works and saves progress in the browser only.
